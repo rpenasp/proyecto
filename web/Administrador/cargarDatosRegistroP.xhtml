@@ -1,0 +1,186 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:html5="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="../Templates/tema.xhtml">
+
+
+            <ui:define name="left">
+
+                <div class="logo">
+                    <a href="../administrador/index.xhtml" class="simple-text logo-mini">
+                        <div class="logo-image-small">
+                            <img src="../Templates/assets/img/logo-small.png"/>
+                        </div>
+                    </a>
+                    <a href="../administrador/index.xhtml" class="simple-text logo-normal">
+                        Roxanne Peña                  
+                    </a>
+                </div>
+                <div class="sidebar-wrapper">
+                    <ul class="nav">
+                        <c:forEach items="#{usuarioSesion.usuLogin.usuarioRolCollection}" var="objUrol">
+                            <li>
+                                <a href="../#{objUrol.ROLPKRol.ROLNombre}/index.xhtml?faces-redirect=true">
+                                    <i class="nc-icon nc-bank"></i>
+                                    <p>#{objUrol.ROLPKRol.ROLNombre}</p>
+                                </a>
+                            </li>
+
+                        </c:forEach>
+                        <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                            <div class="menu_section">
+
+                                <ul class="nav side-menu">
+
+                                    <ul class="nav child_menu">
+                                        <li><a href="cargarDatos.xhtml">Cargar datos Roles</a></li>
+                                        <li><a href="cargarDatosUsu.xhtml">Cargar Datos Usuarios</a></li>         
+                                        <li><a href="cargarDatosCategorias.xhtml">Cargar categorías</a></li> 
+                                        <li><a href="cargarDatosProductos.xhtml">Cargar Productos</a></li>
+                                    </ul>
+                                </ul>
+                            </div>
+                        </div>
+                    </ul>
+                </div>
+            </ui:define>
+
+            <ui:define name="top">
+                <div class="container-fluid">
+                    <div class="navbar-wrapper">
+                        <div class="navbar-toggle">
+                            <button type="button" class="navbar-toggler">
+                                <span class="navbar-toggler-bar bar1"></span>
+                                <span class="navbar-toggler-bar bar2"></span>
+                                <span class="navbar-toggler-bar bar3"></span>
+                            </button>
+                        </div>
+                        <a class="navbar-brand" href="#pablo">Administrador</a>
+                    </div>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-bar navbar-kebab"></span>
+                        <span class="navbar-toggler-bar navbar-kebab"></span>
+                        <span class="navbar-toggler-bar navbar-kebab"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="navigation">
+                        <form>
+                            <div class="input-group no-border">
+                                <input type="text" value="" class="form-control" placeholder="Buscar..."/>
+                                <div class="input-group-append">
+                                    <div class="input-group-text">
+                                        <i class="nc-icon nc-zoom-split"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link btn-rotate" href="../index.xhtml">
+                                    <i class="nc-icon nc-settings-gear-65"></i>
+                                    <p>
+                                        <span class="d-lg-none d-md-block">Account</span>
+                                    </p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+            </ui:define>
+
+            <ui:define name="content">
+
+                <h:form enctype="multipart/form-data">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="cargarDatosProductos.xhtml">Tabla</a></li>
+                            <li class="breadcrumb-item"><a href="cargarDatosRegistroP.xhtml">Registrar Productos</a></li>
+
+                        </ol>
+                    </nav>
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label for="tdl">Seleccione un Catalogo</label>
+                            <br></br>
+                            <h:selectOneMenu  id="tdl" styleClass="form-control" value="#{cargarProductosRequest.nombreCat}">                      
+                                <f:selectItem itemValue="Ferretería" itemLabel="Ferretería"></f:selectItem>
+                                <f:selectItem itemValue="Música" itemLabel="Música"></f:selectItem>
+                                <f:selectItem itemValue="Vestuario" itemLabel="Vestuario"></f:selectItem>
+                                <f:selectItem itemValue="Dulcería" itemLabel="Dulcería"></f:selectItem>
+                                <f:selectItem itemValue="Electrodomésticos" itemLabel="Electrodomésticos"></f:selectItem>
+                                <f:selectItem itemValue="Deportes" itemLabel="Deportes"></f:selectItem>
+                                <f:selectItem itemValue="Hogar" itemLabel="Hogar"></f:selectItem>
+                                <f:selectItem itemValue="Mascotas" itemLabel="Mascotas"></f:selectItem>
+                            </h:selectOneMenu>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="validationCustom01">Nombre</label>
+                            <h:inputText value="#{cargarProductosRequest.nombre}" class="form-control" id="nombresId"  maxlength="20" html5:placeholder="Nombre"  required="true"  validatorMessage="No debe superar 20 caracteres" requiredMessage="Ingrese un nombre"  />
+                            <div class="valid-feedback">
+                                <h:message for="nombresId" style="color: red"></h:message>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="validationCustom02">Marca</label>
+                            <h:inputText value="#{cargarProductosRequest.marca}" class="form-control" id="marcaId" html5:placeholder="Marca" maxlength="20" required="true" validatorMessage="No debe superar 20 caracteres" requiredMessage="Ingrese una marca"  />
+                            <div class="valid-feedback">
+                                <h:message for="marcaId" style="color: red"></h:message>
+                            </div>
+
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="validationCustom02">Descripción</label>
+                            <h:inputText value="#{cargarProductosRequest.descripcion}" class="form-control" id="descripcionId" html5:placeholder="Descripcion" maxlength="30" required="true" validatorMessage="No debe superar 20 caracteres" requiredMessage="Ingrese una descripcion"  />
+                            <div class="valid-feedback">
+                                <h:message for="descripcionId" style="color: red"></h:message>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="validationCustom02">Precio</label>
+                            <h:inputText value="#{cargarProductosRequest.precio}" class="form-control" id="precioId" html5:placeholder="precio" maxlength="20" required="true" validatorMessage="No debe superar 20 caracteres" requiredMessage="Ingrese un precio"  />
+                            <div class="valid-feedback">
+                                <h:message for="precioId" style="color: red"></h:message>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="validationCustom02">Impuesto</label>
+                            <h:inputText value="#{cargarProductosRequest.impuesto}" class="form-control" id="impuestoId" html5:placeholder="impuesto" maxlength="20" required="true" validatorMessage="No debe superar 20 caracteres" requiredMessage="Ingrese el impuesto"  />
+                            <div class="valid-feedback">
+                                <h:message for="impuestoId" style="color: red"></h:message>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="exampleFormControlFile1">Ingrese la imagen del producto</label>
+                            <img src="../img/not-available.png" width="120px" height="80px" />
+                            <h:inputFile  class="form-control-file" id="exampleFormControlFile1" value="#{cargarProductosRequest.imgProducto}" requiredMessage="Ingrese un archivo" required="true" validator="#{cargarProductosRequest.validarArchivo}"></h:inputFile>
+                            <h:inputFile  class="form-control-file2" id="exampleFormControlFile12" value="#{cargarProductosRequest.imgProducto2}"  ></h:inputFile>
+                            <h:inputFile  class="form-control-file3" id="exampleFormControlFile13" value="#{cargarProductosRequest.imgProducto3}"  ></h:inputFile>
+                            <h:inputFile  class="form-control-file4" id="exampleFormControlFile14" value="#{cargarProductosRequest.imgProducto4}"  ></h:inputFile>
+                            <h:inputFile  class="form-control-file5" id="exampleFormControlFile15" value="#{cargarProductosRequest.imgProducto5}"  ></h:inputFile>
+                        </div>
+                
+                    </div>
+                    <h:commandButton value="Cargar" class="btn btn-primary" action="#{cargarProductosRequest.subirProducto()}"></h:commandButton> 
+                    <h:messages></h:messages>
+
+                </h:form>
+
+
+            </ui:define>
+
+
+
+        </ui:composition>
+
+    </body>
+</html>
+
