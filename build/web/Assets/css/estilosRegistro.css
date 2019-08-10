@@ -1,0 +1,14 @@
+body {
+     background-image: url("../..//img/istockphoto-878215904-1024x1024.jpg");
+}
+h2 {
+    font-family: Galada;
+    font-size: 150px;
+    text-align: center;
+    color: black;
+    padding-top: 50px;
+}
+
+#formulario {
+    color: black;
+}

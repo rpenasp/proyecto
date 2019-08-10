@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:html5="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Registro</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
+        <link href="Assets/css/estilosRegistro.css" rel="stylesheet" type="text/css"/>
+        <link href="https://fonts.googleapis.com/css?family=Antic+Didone|Elsie|Galada|Kodchasan&display;=swap" rel="stylesheet"></link>
+    </h:head>
+    <h:body>
+        <h2>Registro</h2>
+
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <h:form id="formulario">
+                    <h:messages  style="color:red;margin:8px;"/> 
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label for="tdl">Tipo Documento</label>
+                            <h:selectOneMenu  id="tdl" styleClass="form-control" value="#{usuarioSession.tipoDocumento}" >
+                                <f:selectItem itemValue="1" itemLabel="Cédula de Ciudadania"></f:selectItem>
+                                <f:selectItem itemValue="2" itemLabel="Cédula de Extranjería"></f:selectItem>
+                                <f:selectItem itemValue="3" itemLabel="Tarjeta de Identidad"></f:selectItem>
+                                <f:selectItem itemValue="4" itemLabel="Carnét Diplomático"></f:selectItem>
+                                <f:selectItem itemValue="5" itemLabel="NIT"></f:selectItem>
+                                <f:selectItem itemValue="6" itemLabel="Pasaporte"></f:selectItem>
+                                <f:selectItem itemValue="7" itemLabel="Permiso Especial"></f:selectItem>
+                                <f:selectItem itemValue="8" itemLabel="Salvo Conducto de Permanencía"></f:selectItem>
+                            </h:selectOneMenu>   
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="documentoTC">Documento</label>
+                            <h:inputText value="#{usuarioSession.documento}" class="form-control" id="documentoTC" html5:placeholder="Numero documento" maxlength="20" required="true" validatorMessage="No debe superar 20 caracteres" requiredMessage="Ingrese un documento"  />
+                            <div class="valid-feedback">
+                                <h:message for="documentoTC" style="color: red"></h:message>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <label for="validationCustom01">Nombres</label>
+                            <h:inputText value="#{usuarioSession.nombre}" class="form-control" id="nombresId"  maxlength="20" html5:placeholder="Nombres"  required="true"  validatorMessage="No debe superar 20 caracteres" requiredMessage="Ingrese un nombre"  />
+                            <div class="valid-feedback">
+                                <h:message for="nombresId" style="color: red"></h:message>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="validationCustom02">Apellidos</label>
+                            <h:inputText value="#{usuarioSession.apellido}" class="form-control" id="apellidosId" html5:placeholder="Apellidos" maxlength="20" required="true" validatorMessage="No debe superar 20 caracteres" requiredMessage="Ingrese un apellido"  />
+                            <div class="valid-feedback">
+                                <h:message for="apellidosId" style="color: red"></h:message>
+                            </div>
+
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="validationCustom02">Correo</label>
+                            <h:inputText value="#{usuarioSession.correo}" class="form-control" id="correoId" html5:placeholder="Correo" maxlength="30" required="true" validatorMessage="No debe superar 20 caracteres" requiredMessage="Ingrese un correo"  />
+                            <div class="valid-feedback">
+                                <h:message for="correoId" style="color: red"></h:message>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="validationCustom02">Dirección</label>
+                            <h:inputText value="#{usuarioSession.direccion}" class="form-control" id="direccionId" html5:placeholder="Dirección" maxlength="20" required="true" validatorMessage="No debe superar 20 caracteres" requiredMessage="Ingrese una dirección"  />
+                            <div class="valid-feedback">
+                                <h:message for="direccionId" style="color: red"></h:message>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="validationCustom02">Celular</label>
+                            <h:inputText value="#{usuarioSession.celular}" class="form-control" id="celularId" html5:placeholder="Celular" maxlength="20" required="true" validatorMessage="No debe superar 20 caracteres" requiredMessage="Ingrese un celular"  />
+                            <div class="valid-feedback">
+                                <h:message for="celularId" style="color: red"></h:message>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="validationCustomUsername">Nombre Usuario</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroupPrepend">@</span>
+                                </div>
+                                <h:inputText value="#{usuarioSession.nomUsuario}" class="form-control" id="nombreUsuarioId" html5:placeholder="Nombre Usuario" maxlength="20" required="true"  validatorMessage="No debe superar 20 caracteres" requiredMessage="Ingrese un nombre usuario"  />
+                                <div class="valid-feedback">
+                                    <h:message for="nombreUsuarioId" style="color: red"></h:message>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-4 mb-3">
+                            <label for="validationCustom03">Clave</label>
+                            <h:inputSecret value="#{usuarioSession.clave}" class="form-control" id="claveId"  maxlength="20" required="true"  validatorMessage="No debe superar 20 caracteres" requiredMessage="Ingrese una clave"  />
+                            <div class="valid-feedback">
+                                <h:message for="claveId" style="color: red"></h:message>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    
+                    <h:commandButton  class="btn btn-outline-dark "  action="#{usuarioSession.ingresarUsuario()}" value="Registrar"></h:commandButton>
+                    <a href='index.xhtml' class="btn btn-outline-dark">Regresar</a>                   
+                </h:form>
+            </div>
+        </div>
+
+    </h:body>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</html>
+

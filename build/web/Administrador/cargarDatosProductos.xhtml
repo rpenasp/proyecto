@@ -1,0 +1,160 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="../Templates/tema.xhtml">
+
+
+            <ui:define name="left">
+
+                            <div class="logo">
+                    <a href="../administrador/index.xhtml" class="simple-text logo-mini">
+                        <div class="logo-image-small">
+                            <img src="../Templates/assets/img/logo-small.png"/>
+                        </div>
+                    </a>
+                    <a href="../administrador/index.xhtml" class="simple-text logo-normal">
+                        #{usuarioSession.usuLogin.nombre} #{usuarioSession.usuLogin.apellido}                 
+                    </a>
+                </div>
+                <div class="sidebar-wrapper">
+                    <ul class="nav">           
+                        <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                            <div class="menu_section">
+
+                                <ul class="nav side-menu">
+
+                                   <ul class="nav child_menu">
+                                        <li><a href="cargarDatos.xhtml">Cargar Roles</a></li>
+                                        <li><a href="cargarDatosUsu.xhtml">Cargar Usuarios</a></li>         
+                                        <li><a href="cargarDatosCategorias.xhtml">Cargar Catalogos</a></li>
+                                        <li><a href="cargarDatosProductos.xhtml">Cargar Productos</a></li>
+                                        <li><a href="Graficas.xhtml">Graficas</a></li>
+                                    </ul>
+                                </ul>
+                            </div>
+                        </div>
+                    </ul>
+                </div>
+            </ui:define>
+
+            <ui:define name="top">
+                <div class="container-fluid">
+                    <div class="navbar-wrapper">
+                        <div class="navbar-toggle">
+                            <button type="button" class="navbar-toggler">
+                                <span class="navbar-toggler-bar bar1"></span>
+                                <span class="navbar-toggler-bar bar2"></span>
+                                <span class="navbar-toggler-bar bar3"></span>
+                            </button>
+                        </div>
+                        <a class="navbar-brand">#{usuarioSession.rol}</a>
+                    </div>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-bar navbar-kebab"></span>
+                        <span class="navbar-toggler-bar navbar-kebab"></span>
+                        <span class="navbar-toggler-bar navbar-kebab"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="navigation">
+                        <form>                   
+                        </form>
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link btn-rotate" href="../index.xhtml">
+                                    <i class="nc-icon nc-settings-gear-65"></i>
+                                    <p>
+                                        <span class="d-lg-none d-md-block">Cerrar Sesión</span>
+                                    </p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </ui:define>
+
+            <ui:define name="content">
+
+                <h:form enctype="multipart/form-data">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="cargarDatosProductos.xhtml">Tabla</a></li>
+                            <li class="breadcrumb-item"><a href="cargarDatosRegistroP.xhtml">Registrar Productos</a></li>
+                        </ol>
+                    </nav>
+
+
+                    <br></br>
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Id</th>
+                                <th>Producto</th>
+                                <th>Imagen </th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach var="obj" items="#{cargarProductosRequest.mostrarProduc()}">
+                                <tr>
+
+                                    <td>#{obj[2]}</td>
+                                    <td>#{obj[0]}</td>
+                                    <td>
+                                        <img src="../img/Imagenes/#{obj[1]}" alt="" width="100px" height="100px"/>
+                                    </td>
+                                    <td>#{obj[3]}</td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Id</th>
+                                <th>Nombre Catalogo</th>
+                                <th>Producto</th>                            
+                                <th>Marca</th>                            
+                                <th>Descripción</th>                            
+                                <th>Precio</th>                            
+                                <th>Impuesto</th>  
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach var="obj" items="#{cargarProductosRequest.listarP()}">
+                                <tr>
+
+                                    <td>#{obj.catalogoIdcatalogo.idcatalogo}</td>
+                                    <td>#{obj.catalogoIdcatalogo.nombre}</td>
+                                    <td>#{obj.nombre}</td>
+                                    <td>#{obj.marca}</td>
+                                    <td>#{obj.descripcion}</td>
+                                    <td>#{obj.precio}</td>
+                                    <td>#{obj.impuesto}</td>
+
+
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+
+
+                </h:form>
+
+
+            </ui:define>
+
+
+
+        </ui:composition>
+
+    </body>
+</html>
+

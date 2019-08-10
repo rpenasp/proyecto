@@ -1,0 +1,23 @@
+body {
+     background-image: url("../..//img/login.jpg");
+}
+
+h2 {
+    font-family: Galada;
+    font-size: 90px;
+    text-align: center;
+    color: #E1DADA;
+    padding-top: 110px;
+}
+
+#formulario {
+    color:#CAC1C1;
+}
+
+a{
+    color: white;
+}
+h5{
+    
+    
+}
