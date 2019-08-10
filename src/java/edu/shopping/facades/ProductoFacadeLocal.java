@@ -34,6 +34,12 @@ public interface ProductoFacadeLocal {
 
     public List<Object> mostrarProduc();
 
+    public List<Object> mostrarProductos1();
+
+    public List<Producto> mostrarProductosxcategoria(int idCat);
+
+
+
    
     
 }

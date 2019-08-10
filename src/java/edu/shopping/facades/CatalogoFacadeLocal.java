@@ -38,6 +38,8 @@ public interface CatalogoFacadeLocal {
 
     public List<Object> mostrarCategorias3();
 
+    public List<Object> grafico1();
+
 
     
 }

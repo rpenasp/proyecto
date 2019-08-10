@@ -93,7 +93,7 @@
 
                         <div class="col-md-4 mb-3">
                             <label for="validationCustom03">Clave</label>
-                            <h:inputText value="#{usuarioSession.clave}" class="form-control" id="claveId" html5:placeholder="Clave" maxlength="20" required="true"  validatorMessage="No debe superar 20 caracteres" requiredMessage="Ingrese una clave"  />
+                            <h:inputSecret value="#{usuarioSession.clave}" class="form-control" id="claveId"  maxlength="20" required="true"  validatorMessage="No debe superar 20 caracteres" requiredMessage="Ingrese una clave"  />
                             <div class="valid-feedback">
                                 <h:message for="claveId" style="color: red"></h:message>
                             </div>

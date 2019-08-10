@@ -58,6 +58,33 @@ public class ProductoFacade extends AbstractFacade<Producto> implements Producto
         }
     
     }
+      
+    @Override
+     public List<Object> mostrarProductos1(){
+        try {
+            List<Object> rutaImg = new ArrayList<>();
+            Query mostrarImg= em.createNativeQuery("SELECT catalogo.nombre,`ruta`,`producto_idproducto`, catalogo.idcatalogo, FROM `imagen` INNER JOIN producto ON producto.idproducto=imagen.producto_idproducto INNER JOIN catalogo ON catalogo.idcatalogo=producto.idproducto WHERE `producto_idproducto`=producto_idproducto");
+            rutaImg = mostrarImg.getResultList();
+            return rutaImg;
+        } catch (Exception e) {
+            return null;
+        }
+    
+    }  
+      @Override
+     public List<Producto> mostrarProductosxcategoria(int idCat){
+        try {
+            List<Producto> rutaImg = new ArrayList<>();
+            Query mostrarImg= em.createQuery("SELECT p FROM Producto p WHERE p.catalogoIdcatalogo.idcatalogo = :idCat");
+            mostrarImg.setParameter("idCat", idCat);
+            rutaImg = mostrarImg.getResultList();
+            return rutaImg;
+        } catch (Exception e) {
+            return null;
+        }
+    
+    }  
+  
 
 
 }

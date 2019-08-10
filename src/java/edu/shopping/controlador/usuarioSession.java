@@ -13,6 +13,7 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import javax.ejb.EJB;
+import org.primefaces.PrimeFaces;
 
 /**
  *
@@ -35,6 +36,7 @@ public class usuarioSession implements Serializable {
     private String celular;
     private Usuario usuLogin;
     private String clave;
+    private String rol;
 
     public usuarioSession() {
     }
@@ -118,6 +120,13 @@ public class usuarioSession implements Serializable {
     public void setClave(String clave) {
         this.clave = clave;
     }
+      public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
 
     public String ingresarUsuario() {
         try {
@@ -165,17 +174,21 @@ public class usuarioSession implements Serializable {
 
             if (this.usuLogin != null) {
                 int asigRol = usuarioFacadeLocal.consulraRol(usuLogin.getIdusuario());
-                String rol = usuarioFacadeLocal.consutlaDos(asigRol);
+                rol = usuarioFacadeLocal.consutlaDos(asigRol);
                 ruta=rol;
 
                 return "/" + ruta + "/index.xhtml?faces-redirect=true";
             } else {
+                PrimeFaces.current().executeScript("estadoBad('Usuario no registrado')");
                 return "#";
             }
 
         } catch (Exception e) {
+            PrimeFaces.current().executeScript("estadoBad('Usuario no registrado')");
             return "#";
         }
     }
+
+  
 
 }

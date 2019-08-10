@@ -36,6 +36,7 @@ public class cargarCatalogosRequest {
     private int idCat;
     private String nombre;
     private Catalogo catalogo;
+    private String nomUno="";
 
     public cargarCatalogosRequest() {
     }
@@ -79,6 +80,14 @@ public class cargarCatalogosRequest {
     public void setCatalogo(Catalogo catalogo) {
         this.catalogo = catalogo;
     }
+     public String getNomUno() {
+        return nomUno;
+    }
+
+    public void setNomUno(String nomUno) {
+        this.nomUno = nomUno;
+    }
+
 
 
 
@@ -158,5 +167,15 @@ public class cargarCatalogosRequest {
         }
 
     }
+    
+    public void graficasUno () {
+        
+        for (int i = 0; i < catFacadeLocal.grafico1().size(); i++) {
+            nomUno +="{y: 67, label:'Inbox'}";
+            
+        }
+        
+    }
 
+   
 }

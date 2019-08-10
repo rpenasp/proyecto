@@ -81,5 +81,17 @@ public class CatalogoFacade extends AbstractFacade<Catalogo> implements Catalogo
         }
     
     }
+      
+    @Override
+      public List<Object> grafico1(){
+          try {
+              List<Object> graf = new ArrayList<>();
+              Query grafic = em.createNativeQuery("SELECT COUNT(producto.nombre) FROM producto INNER JOIN catalogo ON catalogo.idcatalogo=producto.catalogo_idcatalogo WHERE catalogo.idcatalogo = catalogo.idcatalogo GROUP BY catalogo.nombre");
+              graf = grafic.getResultList();
+              return graf;
+          } catch (Exception e) {
+              return  null;
+          }
+      }
    
 }

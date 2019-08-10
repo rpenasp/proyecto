@@ -32,7 +32,7 @@ public class CorreoEnviar {
     private String claveE = "ilovedance123";
     private String correroR;
     private String asunto = "Recuperar Contraseña";
-    private String cuerpo="prueba correo";
+    private String cuerpo="123";
 
     public CorreoEnviar() {
     }

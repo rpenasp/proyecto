@@ -211,7 +211,24 @@ public class CargarProductosRequest {
             return null;
         }
     }
-
+   
+   public List<Object> mostrarProductos11() {
+        try {
+            return productoFacadeLocal.mostrarProductos1();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+   
+  
+   public List<Catalogo> mostrarCatalogos() {
+        try {
+            return catalogoFacadeLocal.findAll();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+   
     public void validarArchivo(FacesContext ctx, UIComponent comp, Object value) throws IOException {
 
         List<FacesMessage> msgs = new ArrayList<FacesMessage>();
@@ -330,5 +347,13 @@ public class CargarProductosRequest {
         return "cargarDatosRegistroP.xhtml";
 
     }
+    
+     public List<Producto> mostrarProductosxcategoria(int idCat){
+         try {
+           return productoFacadeLocal.mostrarProductosxcategoria(idCat);
+         } catch (Exception e) {
+             return null;
+         }
+     }
 
 }
